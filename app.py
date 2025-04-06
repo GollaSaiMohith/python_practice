@@ -1,19 +1,29 @@
-from flask import Flask
-'''
- It creates an instance of the Flask class, 
- which will be your WSGI (Web Server Gateway Interface) application.
-'''
-###WSGI Application
-app=Flask(__name__)
+import streamlit as st
+import pandas as pd
+import numpy as np
 
-@app.route("/")
-def welcome():
-    return "Welcome to this best Flask course.This should be an amazing course"
+## Title of the aplication
+st.title("Hello Streamlit")
 
-@app.route("/index")
-def index():
-    return "Welcome to the index page"
+## Diplay a Simple Text
+st.write("This is a imple text")
+
+##create a simple Dataframe
+
+df = pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40]
+})
 
 
-if __name__=="__main__":
-    app.run(debug=True)
+## Display the Dataframe
+st.write("Here is the dataframe")
+st.write(df)
+
+
+##create a line chart
+
+chart_data=pd.DataFrame(
+    np.random.randn(20,3),columns=['a','b','c']
+)
+st.line_chart(chart_data)
